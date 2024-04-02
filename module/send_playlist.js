@@ -1,8 +1,16 @@
 // 私信歌单
+const getCheckToken = require('../util/check-token')
 
-module.exports = (query, request) => {
+module.exports = async (query, request) => {
   query.cookie.os = 'pc'
+  const ct = await getCheckToken()
+  if (!ct) {
+    return
+  }
+  console.log('获取到checkToken', ct)
+
   const data = {
+    checkToken: ct,
     id: query.playlist,
     type: 'playlist',
     msg: query.msg,

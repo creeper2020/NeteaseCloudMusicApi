@@ -5,7 +5,6 @@ module.exports = (query, request) => {
     userId: query.uid,
     time: query.time || '0',
     limit: query.limit || 30,
-    offset: query.offset || 0,
     getcounts: 'true',
   }
   return request(
